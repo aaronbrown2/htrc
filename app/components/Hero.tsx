@@ -23,9 +23,9 @@ export default function Hero() {
             />
 
             {/* Foreground Content */}
-            <div className="relative bg-htrcGrey bg-opacity-100 p-10 rounded-lg max-w-lg mx-auto fade-in-up duration-300">
-                <h1 className="text-4xl lg:text-5xl font-extrabold mb-4">We Make Indie Albums</h1>
-                <h2 className="text-zinc-200 text-lg lg:text-xl max-w-xl mx-auto">
+            <div className="relative bg-htrcGrey/70 backdrop-blur-sm p-10 rounded-full w-full max-w-[80vw] md:max-w-xl mx-auto fade-in-up duration-300">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">We Make Indie Albums</h1>
+                <h2 className="text-zinc-200 text-sm sm:text-lg lg:text-xl max-w-xl mx-auto">
                     Production, Creative Direction, Mixing, and Mastering that&#39;ll make you sound amazing.
                 </h2>
             </div>
