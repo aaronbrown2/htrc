@@ -5,8 +5,8 @@ export default function About () {
                 <h2 className="text-4xl font-bold mb-6 text-center">About Us</h2>
                 <p className="leading-relaxed">
                     Hot Take Recording Co is a boutique audio production team specializing in mix engineering, production, and creative direction. 
-                    Our goal is to elevate your sound while preserving your artistic intent. Whether you're releasing your first track or your tenth album, 
-                    we're here to help you sound your best.
+                    Our goal is to elevate your sound while preserving your artistic intent. Whether you&#39;re releasing your first track or your tenth album, 
+                    we&#39;re here to help you sound your best.
                 </p>
             </div>
         </section>

@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 export default function Hero() {
@@ -27,7 +26,7 @@ export default function Hero() {
             <div className="relative bg-htrcGrey bg-opacity-100 p-10 rounded-lg max-w-lg mx-auto fade-in-up duration-300">
                 <h1 className="text-4xl lg:text-5xl font-extrabold mb-4">We Make Indie Albums</h1>
                 <h2 className="text-zinc-200 text-lg lg:text-xl max-w-xl mx-auto">
-                    Production, Creative Direction, Mixing, and Mastering that'll make you sound amazing.
+                    Production, Creative Direction, Mixing, and Mastering that&#39;ll make you sound amazing.
                 </h2>
             </div>
         </section>
