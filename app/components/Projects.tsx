@@ -73,48 +73,93 @@ const projects = [
 ];
 
 export default function Projects () {
-    return (
-        <section id="projects" className="py-20 px-4 bg-htrcGrey text-center">
-            <h2 className="text-4xl font-bold mb-6">Sounds</h2>
-            <div className="max-w-6xl mx-auto">
-                <Swiper
-                modules={[Navigation, Pagination]}
-                spaceBetween={16}
-                slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
-                grabCursor={true}
-                className="rounded-lg overflow-hidden"
-                >
-                    {projects.map(({ image, link, title, artist, roles }, idx) => (
-                        <SwiperSlide key={idx}>
-                            <div className="flex flex-col md:flex-row items-center justify-center gap-16 p-6 mb-24 rounded-2xl">
-                                {/* Album Artwork with Spotify Hover */}
-                                <div className="relative group w-full md:w-1/2 max-w-md">
-                                    <a href={link} target="_blank" rel="noopener noreferrer">
-                                        <Image
-                                        src={`/img/${image}`}
-                                        alt={`${title} Album Artwork`}
-                                        width={500}
-                                        height={500}
-                                        className="w-full h-auto object-cover rounded-xl transition-opacity duration-300 group-hover:opacity-40"
-                                        />
-                                        <i className="fab fa-spotify text-white text-[200px] group-hover:opacity-100 opacity-0 
-                                        transition-opacity duration-300 absolute inset-0 flex justify-center items-center"></i>
-                                    </a>
-                                </div>
-                            
-                                {/* Album Details */}
-                                <div className="text-left text-white max-w-md space-y-2">
-                                    <h5 className="text-3xl font-extrabold">{title}</h5>
-                                    <h6 className="text-xl font-bold italic">{artist}</h6>
-                                    <p className="text-md text-zinc-300">{roles}</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-        </section>
-    )
+  return (
+    <section id="projects" className="py-20 px-4 bg-htrcGrey text-center">
+        <h2 className="text-4xl font-bold mb-6">Sounds</h2>
+        <div className="hidden lg:block max-w-6xl mx-auto">
+            <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={16}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            grabCursor={true}
+            className="rounded-lg overflow-hidden"
+            >
+              {projects.map(({ image, link, title, artist, roles }, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="flex flex-row items-center justify-center gap-8 p-6 mb-24 rounded-2xl">
+                      {/* Album Artwork with Spotify Hover */}
+                      <div className="relative group w-full max-w-md">
+                        <a href={link} target="_blank" rel="noopener noreferrer">
+                          <Image
+                          src={`/img/${image}`}
+                          alt={`${title} Album Artwork`}
+                          width={400}
+                          height={400}
+                          className="object-cover rounded-xl transition-opacity duration-300 group-hover:opacity-40"
+                          />
+                          <i className="fab fa-spotify text-white text-[200px] group-hover:opacity-100 opacity-0 
+                          transition-opacity duration-300 absolute inset-0 flex justify-center items-center"></i>
+                        </a>
+                      </div>
+                      
+                      {/* Album Details */}
+                      <div className="text-left text-white max-w-md space-y-2">
+                          <h5 className="text-3xl font-extrabold">{title}</h5>
+                          <h6 className="text-xl font-bold italic">{artist}</h6>
+                          <p className="text-md text-zinc-300">{roles}</p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+              ))}
+            </Swiper>
+        </div>
+        <div className="block lg:hidden max-w-6xl mx-auto">
+            <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={16}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            grabCursor={true}
+            className="rounded-lg overflow-hidden"
+            >
+              {projects.map(({ image, link, title, artist, roles }, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 p-6 mb-10 md:mb-24">
+                      {/* Album Artwork with Spotify Hover */}
+                      <div className="relative group max-w-md">
+                        <a target="_blank" rel="noopener noreferrer">
+                          <Image
+                          src={`/img/${image}`}
+                          alt={`${title} Album Artwork`}
+                          width={300}
+                          height={300}
+                          className="rounded-xl mx-auto"
+                          />  
+                        </a>
+                      </div>
+                      
+                      {/* Album Details */}
+                      <div className="text-center text-white max-w-md space-y-2">
+                          <h5 className="text-3xl font-extrabold">{title}</h5>
+                          <h6 className="text-xl font-bold italic">{artist}</h6>
+                          <p className="text-md pb-[20px] text-zinc-300">{roles}</p>
+                          <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-[#1DB954] text-htrcWhite rounded-full px-4 py-2 hover:bg-[#1ed760] transition">
+                              <i className="fab fa-spotify text-xl"></i>
+                              <span className="font-sans normal-case">Play on Spotify</span>
+                          </a>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+              ))}
+            </Swiper>
+        </div>
+    </section>
+  )
 }
