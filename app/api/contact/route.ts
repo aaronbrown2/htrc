@@ -38,13 +38,15 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
+  const submissionId = crypto.randomUUID().slice(0, 8);
 
   const { error } = await resend.emails.send({
     from,
     to,
     replyTo: email,
-    subject: `Hot Take contact form: ${name}`,
+    subject: `New Hot Take inquiry ${submissionId}`,
     text: [
+      `Submission ID: ${submissionId}`,
       `Name: ${name}`,
       `Email: ${email}`,
       '',
