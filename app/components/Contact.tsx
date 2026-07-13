@@ -3,6 +3,8 @@
 import { useState } from 'react';
 
 export default function Contact() {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,30 +17,38 @@ export default function Contact() {
     const { name, email, message } = formData;
 
     if (!name || !email || !message) {
-      alert('Please fill out all fields.');
+      setStatus('error');
+      setStatusMessage('Please fill out all fields.');
       return;
     }
 
     if (!/\S+@\S+\.\S+/.test(email)) {
-      alert('Please enter a valid email address.');
+      setStatus('error');
+      setStatusMessage('Please enter a valid email address.');
       return;
     }
 
-    // This is where you'll POST to your AWS Lambda endpoint
+    setStatus('sending');
+    setStatusMessage('');
+
     try {
-      const res = await fetch('https://gjm94caqyb.execute-api.us-east-1.amazonaws.com/htrcFormHandling', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
       });
 
-      if (!res.ok) throw new Error('Something went wrong');
+      const data = await res.json();
 
-      alert('Message sent!');
-      setFormData({ name: '', email: '', message: '' }); // reset form
+      if (!res.ok) throw new Error(data.error || 'Something went wrong');
+
+      setStatus('success');
+      setStatusMessage('Message sent. Thanks for reaching out.');
+      setFormData({ name: '', email: '', message: '' });
     } catch (err) {
       console.error(err);
-      alert('Failed to send message.');
+      setStatus('error');
+      setStatusMessage(err instanceof Error ? err.message : 'Failed to send message.');
     }
   };
 
@@ -72,11 +82,22 @@ export default function Contact() {
           <div>
             <button
               type="submit"
+              disabled={status === 'sending'}
               className="bg-htrcWhite mt-5 mb-5 text-htrcGrey font-semibold px-6 py-3 rounded hover:bg-htrcOrange transition duration-300 transform hover:-translate-y-[0.5px]"
             >
-              Send Message
+              {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
           </div>
+          {statusMessage && (
+            <p
+              className={`text-sm ${
+                status === 'success' ? 'text-green-400' : 'text-red-400'
+              }`}
+              role="status"
+            >
+              {statusMessage}
+            </p>
+          )}
         </form>
       </div>
     </section>
