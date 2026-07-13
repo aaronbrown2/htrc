@@ -27,6 +27,20 @@ export default function Header () {
     return (
         <header ref={headerRef} className="fixed top-0 w-full z-50 bg-htrcGrey border-b-[1px] border-black">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-[90px]">
+                <a href="/" aria-label="Hot Take Recording Co home">
+                    <Image src="/img/logo.png" alt="HTRC Logo" width={80} height={80} priority />
+                </a>
+                <nav className="hidden md:flex space-x-6 text-lg" aria-label="Primary navigation">
+                    {navItems.map((item) => (
+                        <a
+                            key={item.href}
+                            href={item.href}
+                            className="hover:text-htrcOrange transition duration-300 transform hover:-translate-y-[0.5px]"
+                        >
+                            {item.label}
+                        </a>
+                    ))}
+                </nav>
                 <button
                     type="button"
                     className={`htrc-burger ${isOpen ? 'open' : ''}`}
@@ -39,14 +53,11 @@ export default function Header () {
                     <span></span>
                     <span></span>
                 </button>
-                <a href="/" aria-label="Hot Take Recording Co home">
-                    <Image src="/img/logo.png" alt="HTRC Logo" width={80} height={80} priority />
-                </a>
             </div>
             <nav
                 id="site-navigation"
-                className={`htrc-main-nav ${isOpen ? 'open' : ''}`}
-                aria-label="Primary navigation"
+                className={`htrc-mobile-nav ${isOpen ? 'open' : ''}`}
+                aria-label="Mobile navigation"
             >
                 <ul>
                     {navItems.map((item) => (

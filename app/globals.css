@@ -24,7 +24,7 @@
 
 .htrc-burger {
   position: relative;
-  display: inline-flex;
+  display: none;
   width: 42px;
   height: 42px;
   flex-direction: column;
@@ -57,30 +57,30 @@
   transform: rotate(-45deg) translateY(-13px);
 }
 
-.htrc-main-nav {
+.htrc-mobile-nav {
   position: fixed;
   top: 90px;
-  left: -280px;
+  right: -280px;
   z-index: 40;
   width: 280px;
   min-height: calc(100vh - 90px);
   padding: 32px;
   background: #151515;
-  border-right: solid #000 3px;
-  transition: left 0.3s ease-in-out, top 0.3s ease-in-out;
+  border-left: solid #000 3px;
+  transition: right 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
-.htrc-main-nav.open {
-  left: 0;
+.htrc-mobile-nav.open {
+  right: 0;
 }
 
-.htrc-main-nav ul {
+.htrc-mobile-nav ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.htrc-main-nav a {
+.htrc-mobile-nav a {
   display: block;
   margin: 24px 0;
   color: #fdfdfd;
@@ -89,7 +89,7 @@
   transition: color 0.3s ease-in-out;
 }
 
-.htrc-main-nav a:hover {
+.htrc-mobile-nav a:hover {
   color: #ffa000;
 }
 
@@ -110,25 +110,29 @@
 
 /* Hide navigation arrows on small screens */
 @media (max-width: 767px) {
+    .htrc-burger {
+      display: inline-flex;
+    }
+
     .swiper-button-next,
     .swiper-button-prev {
       display: none !important;
     }
 
-    .htrc-main-nav {
-      left: 0;
+    .htrc-mobile-nav {
+      right: 0;
       top: -100vh;
       width: 100%;
       min-height: calc(100vh - 90px);
-      border-right: 0;
+      border-left: 0;
       border-bottom: solid #000 3px;
     }
 
-    .htrc-main-nav.open {
+    .htrc-mobile-nav.open {
       top: 90px;
     }
 
-    .htrc-main-nav a {
+    .htrc-mobile-nav a {
       font-size: 1.6rem;
       text-align: center;
     }
