@@ -24,6 +24,17 @@ export default function Header () {
         return () => document.removeEventListener('click', handleClick);
     }, []);
 
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 768px)');
+        const closeDesktopMenu = () => {
+            if (mediaQuery.matches) setIsOpen(false);
+        };
+
+        closeDesktopMenu();
+        mediaQuery.addEventListener('change', closeDesktopMenu);
+        return () => mediaQuery.removeEventListener('change', closeDesktopMenu);
+    }, []);
+
     return (
         <header ref={headerRef} className="fixed top-0 w-full z-50 bg-htrcGrey border-b-[1px] border-black">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-[90px]">

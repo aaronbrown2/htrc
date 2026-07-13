@@ -58,20 +58,7 @@
 }
 
 .htrc-mobile-nav {
-  position: fixed;
-  top: 90px;
-  right: -280px;
-  z-index: 40;
-  width: 280px;
-  min-height: calc(100vh - 90px);
-  padding: 32px;
-  background: #151515;
-  border-left: solid #000 3px;
-  transition: right 0.3s ease-in-out, top 0.3s ease-in-out;
-}
-
-.htrc-mobile-nav.open {
-  right: 0;
+  display: none;
 }
 
 .htrc-mobile-nav ul {
@@ -120,16 +107,27 @@
     }
 
     .htrc-mobile-nav {
+      position: fixed;
+      display: block;
+      top: 90px;
       right: 0;
-      top: -100vh;
+      z-index: 40;
       width: 100%;
       min-height: calc(100vh - 90px);
-      border-left: 0;
+      padding: 32px;
+      background: #151515;
       border-bottom: solid #000 3px;
+      transform: translateY(-100%);
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
     }
 
     .htrc-mobile-nav.open {
-      top: 90px;
+      transform: translateY(0);
+      visibility: visible;
+      pointer-events: auto;
+      transition: transform 0.3s ease-in-out, visibility 0s;
     }
 
     .htrc-mobile-nav a {
